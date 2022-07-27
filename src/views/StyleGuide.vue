@@ -66,59 +66,75 @@
 
     <div class="h1 mt-4 fw-bolder">Формы</div>
 
-    <div class="row">
+    <div class="row mb-2">
       <div class="col">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
+        <input-text-component
+          name="inputName"
+          label="Введите логин"
+          placeholder="Ваш логин"
+          help="Вспомогательный текст"
+        ></input-text-component>
       </div>
       <div class="col">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Email address (disabled)</label>
-          <input type="email" class="form-control" disabled id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
+        <input-text-component
+          name="inputName"
+          label="Email address (disabled)"
+          placeholder="name@example.com"
+          :disabled="true"
+        ></input-text-component>
       </div>
       <div class="col">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Email address (readonly)</label>
-          <input type="email" class="form-control" readonly id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
+        <input-text-component
+          name="inputName"
+          label="Email address (readonly)"
+          placeholder="name@example.com"
+          :readonly="true"
+        ></input-text-component>
       </div>
       <div class="col">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Email address</label>
-          <input type="email" class="form-control is-invalid" id="exampleFormControlInput1" placeholder="name@example.com">
-          <div class="invalid-feedback">Please enter a message in the input.</div>
-        </div>
+        <input-text-component
+          name="inputName"
+          label="Email address"
+          placeholder="name@example.com"
+          error="Please enter a message in the input."
+        ></input-text-component>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row mb-2">
       <div class="col">
-        <div class="mb-3">
-          <label for="validationTextarea" class="form-label">Textarea</label>
-          <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" required></textarea>
-        </div>
+        <textarea-component
+          label="Textarea"
+          name="textarea"
+          placeholder="Required example textarea"
+          :required="true"
+          help="Вспомогательный текст под полем"
+          :resize="false"
+        ></textarea-component>
       </div>
       <div class="col">
-        <div class="mb-3">
-          <label for="validationTextarea" class="form-label">Textarea Disabled</label>
-          <textarea class="form-control" id="validationTextarea" disabled placeholder="Required example textarea" required></textarea>
-        </div>
+        <textarea-component
+          label="Textarea Disabled"
+          name="textarea"
+          placeholder="Required example textarea"
+          :disabled="true"
+        ></textarea-component>
       </div>
       <div class="col">
-        <div class="mb-3">
-          <label for="validationTextarea" class="form-label">Textarea Readonly</label>
-          <textarea class="form-control" id="validationTextarea" readonly placeholder="Required example textarea" required></textarea>
-        </div>
+        <textarea-component
+          label="Textarea Readonly"
+          name="textarea"
+          placeholder="Required example textarea"
+          :readonly="true"
+        ></textarea-component>
       </div>
       <div class="col">
-        <div class="mb-3">
-          <label for="validationTextarea" class="form-label">Textarea</label>
-          <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
-          <div class="invalid-feedback">Please enter a message in the textarea.</div>
-        </div>
+        <textarea-component
+          label="Textarea Readonly"
+          name="textarea"
+          placeholder="Required example textarea"
+          error="Please enter a message in the textarea."
+        ></textarea-component>
       </div>
     </div>
 
@@ -145,29 +161,32 @@
     <div class="h4">Select example</div>
     <div class="row">
       <div class="col">
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+        <select-component
+          name="select1"
+          label="Выберите из списка"
+          v-model="selectedValue"
+          :options="selectOptions"
+          help="Текст с пояснением"
+        ></select-component>
       </div>
       <div class="col">
-        <select class="form-select" aria-label="Default select example" disabled>
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+        <select-component
+          name="select1"
+          label="Выберите из списка"
+          v-model="selectedValue"
+          :options="selectOptions"
+          :disabled="true"
+        ></select-component>
       </div>
       <div class="col">
-        <select class="form-select is-invalid" aria-label="Default select example">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-        <div class="invalid-feedback">Please enter a message in the textarea.</div>
+        <select-component
+          name="select1"
+          label="Выберите из списка"
+          v-model="selectedValue"
+          :default-nothing="true"
+          :options="selectOptions"
+          error="Выберите значение из списка"
+        ></select-component>
       </div>
     </div>
 
@@ -175,43 +194,44 @@
       <h3>Checkboxes</h3>
 
       <div class="row">
-
         <div class="col">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Default checkbox
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-            <label class="form-check-label" for="flexCheckChecked">
-              Checked checkbox
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input is-invalid" type="checkbox" value="" id="flexCheckChecked2" checked>
-            <label class="form-check-label" for="flexCheckChecked2">Checked checkbox</label>
-            <div class="invalid-feedback">Please enter a message in the textarea.</div>
-          </div>
-          <div class="form-check mt-3">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminateDisabled" disabled>
-            <label class="form-check-label" for="flexCheckIndeterminateDisabled">
-              Disabled indeterminate checkbox
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
-            <label class="form-check-label" for="flexCheckDisabled">
-              Disabled checkbox
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled>
-            <label class="form-check-label" for="flexCheckCheckedDisabled">
-              Disabled checked checkbox
-            </label>
-          </div>
+          <checkbox-component
+            name="flexCheckDefault"
+            label="Default checkbox"
+          ></checkbox-component>
+
+          <checkbox-component
+            name="flexCheckDefault2"
+            label="Checked checkbox"
+            v-model="checked"
+          ></checkbox-component>
+
+          <checkbox-component
+            name="flexCheckDefault3"
+            label="Checked checkbox"
+            v-model="checked"
+            help="Help text"
+          ></checkbox-component>
+
+          <checkbox-component
+            name="flexCheckDefault4"
+            label="Checked checkbox"
+            v-model="checked"
+            error="Please enter a message in the textarea."
+          ></checkbox-component>
+
+          <checkbox-component
+            name="flexCheckDisabled"
+            label="Disabled checkbox"
+            disabled
+            v-model="checked"
+          ></checkbox-component>
+
+          <checkbox-component
+            name="flexCheckDisabled2"
+            label="Disabled checkbox"
+            disabled
+          ></checkbox-component>
         </div>
 
         <div class="col">
@@ -513,12 +533,24 @@
 
 <script lang="ts">
 import BasePageLayout from "../components/Layout/BasePageLayout.vue";
+import InputTextComponent from "../components/Forms/InputTextComponent.vue";
+import TextareaComponent from "../components/Forms/TextareaComponent.vue";
+import SelectComponent from "../components/Forms/SelectComponent.vue";
+import CheckboxComponent from "../components/Forms/CheckboxComponent.vue";
 
 export default {
   name: "StyleGuide",
-  components: {BasePageLayout},
+  components: {CheckboxComponent, SelectComponent, TextareaComponent, InputTextComponent, BasePageLayout},
   data() {
-    return {}
+    return {
+      checked: true,
+      selectedValue: '',
+      selectOptions: [
+        {name: 'Test1', id: 1},
+        {name: 'Test2', id: 2},
+        {name: 'Test3', id: 3}
+      ]
+    }
   }
 }
 </script>
