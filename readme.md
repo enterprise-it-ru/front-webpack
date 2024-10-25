@@ -37,3 +37,5 @@ npm run buid
 
 Для интеграции правильно использовать manifest файл и по исходным названиям получать пути к скомпилированным js и css файлам.
 Подробнее описано здесь: https://vitejs.ru/guide/backend-integration.html
+
+
