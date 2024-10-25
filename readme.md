@@ -8,33 +8,32 @@
 
 - [Vite](https://vitejs.dev/)
 - [Bootstrap](https://getbootstrap.com/)
-- [@popperjs/core](https://popper.js.org/)
-- [VueJS](https://vuejs.org)
-- [VueRouter](https://router.vuejs.org/guide/)
-- [Axios](https://github.com/developit/redaxios)
 
 ## Системные требования
 
-- nodejs
+- nodejs 20+
 
 ## Установка
 
-```bash
-npm install
+```shell
+npm ci
 ```
 
-## Запуск
+## Локальная разработка
 
-##### В режиме разработки
-
-Запускается локальный сервер который сильно ускоряет разработку и автоматически подгружает изменения без перезагрузки страницы
-
-```bash
+```shell
 npm run dev
 ```
 
-##### Компиляция для боевого режима работы
+Страницы создаются в корне и открываются по адресу вида http://localhost:5173/styleguide.html
 
-```bash
-npm run build
+## Сборка для прода
+
+```shell
+npm run buid
 ```
+
+После сборки результат кладется в папку dist
+
+Для интеграции правильно использовать manifest файл и по исходным названиям получать пути к скомпилированным js и css файлам.
+Подробнее описано здесь: https://vitejs.ru/guide/backend-integration.html
